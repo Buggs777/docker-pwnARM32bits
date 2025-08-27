@@ -21,6 +21,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     tmux patchelf \
  && rm -rf /var/lib/apt/lists/*
 
+RUN ln -s /usr/arm-linux-gnueabihf/lib/ld-linux-armhf.so.3 /lib/ld-linux.so.3
+ENV LD_LIBRARY_PATH=/usr/arm-linux-gnueabihf/lib
 
 # Pwn setup
 RUN pip3 install --no-cache-dir pwntools
